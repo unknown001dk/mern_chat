@@ -1,7 +1,15 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 import userRouter from './routes/User.route.js';
 dotenv.config();
+
+// database configuration
+mongoose
+  .connect(process.env.MONGO_URL)
+  .then(() => {
+  console.log('Database connected');
+});
 
 const app = express();
 app.use(express.json());
